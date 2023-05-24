@@ -1,0 +1,7 @@
+{
+  "header": {
+    "prefix": "#!",
+    "body": ["#!/usr/bin/env python3"],
+    "description": "print headline"
+  }
+}
