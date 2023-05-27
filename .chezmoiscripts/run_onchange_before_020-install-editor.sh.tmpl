@@ -1,4 +1,8 @@
 #!/bin/bash
 
+{{ $pkgs := list "git" "make" "pip" "python" "cargo" }}
+# - npm 
+# - node
+# - neovim
 
-{{- template "install-package" .install.editor }}
+{{ template "install-package" $pkgs }}

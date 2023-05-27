@@ -1,4 +1,7 @@
 #!/bin/bash
 
+{{ $pkgs := list "curl" "unzip" "fontconfig" }}
+{{ template "install-package" $pkgs }}
 
-{{- template "install-package" .install.font -}}
+# TODO: clone git getnf and run install.sh 
+# TODO: make archlinux package
