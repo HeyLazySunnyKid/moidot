@@ -1,7 +1,34 @@
 #!/bin/bash
 
-{{ $pkgs := list "curl" "unzip" "fontconfig" }}
+set -e
+
+{{ $pkgs := list "fontconfig" }}
 {{ template "install-package" $pkgs }}
 
-# TODO: clone git getnf and run install.sh 
-# TODO: make archlinux package
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install font"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: NerdFont | Create fonts directory 
+      file:
+        path: "~/.local/share/fonts"
+        state: directory
+
+    - name: NerdFont | Check Fonts Exists
+      stat:
+        path: ~/.local/share/fonts/IosevkaTerm.tar.xz
+      register: font
+
+    - name: NerdFont | Install font
+      when: font.stat.exists
+      block:
+        - name: NerdFont | Unpack font
+          ansible.builtin.unarchive:
+            src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/IosevkaTerm.tar.xz
+            dest: ~/.local/share/fonts
+            remote_src: yes
+
+        - name: NerdFont | Update fonts
+          command: fc-cache -fv
+EOF
