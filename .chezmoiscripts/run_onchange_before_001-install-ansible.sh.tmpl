@@ -5,5 +5,5 @@ sudo apt-get update
 sudo apt-get install python pip
 pip install ansible
 {{ else if eq .chezmoi.osRelease.name "Arch Linux" }}
-sudo pacman -Syy python python-pip ansible
+sudo pacman -Syy --no-confirm python python-pip ansible
 {{ end }}
