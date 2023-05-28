@@ -1,6 +1,6 @@
 #!/bin/bash
 
-{{ $ubuntuPkgs := list "git" "make" "pip" "python" "cargo" }}
+{{ $ubuntuPkgs := list "git" "make" "pip" "python" "cargo" }} # TODO: install npm nodejs neovim lunarvim
 {{ $archPkgs   := list "git" "make" "python-pip" "python" "cargo" "npm" "nodejs" "neovim" }}
 
 {{ if eq .chezmoi.osRelease.name "Ubuntu" }}
