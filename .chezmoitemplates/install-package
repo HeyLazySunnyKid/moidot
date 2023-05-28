@@ -2,6 +2,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install packages"
   hosts: localhost
   become: true
+  gather_facts: false
   tasks:
     {{ range . }}
     - name: Install package {{ . }}
