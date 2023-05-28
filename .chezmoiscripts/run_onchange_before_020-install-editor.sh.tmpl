@@ -1,11 +1,7 @@
 #!/bin/bash
 
 {{ $ubuntuPkgs := list "git" "make" "pip" "python" "cargo" }}
-{{ $archPkgs   := list "git" "make" "python-pip" "python" "cargo" }}
-
-# - npm  ??
-# - node ??
-# - neovim ??
+{{ $archPkgs   := list "git" "make" "python-pip" "python" "cargo" "npm" "nodejs" "neovim" }}
 
 {{ if eq .chezmoi.osRelease.name "Ubuntu" }}
 {{ template "install-package" $ubuntuPkgs }}

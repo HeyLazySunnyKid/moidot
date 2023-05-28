@@ -5,7 +5,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   gather_facts: false
   tasks:
     {{ range . }}
-    - name: Install package {{ . }}
+    - name: Install packages | {{ . }}
       package:
         name: {{ . }}
     {{ end }}
