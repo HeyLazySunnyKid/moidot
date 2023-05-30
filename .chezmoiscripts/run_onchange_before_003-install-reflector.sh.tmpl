@@ -1,0 +1,11 @@
+{{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
+{{- $archPkgs   := list "reflector" -}}
+#!/bin/bash
+{{ template "install-package" $archPkgs }}
+    # Continue installation process 
+    - name: Reflector | Enable service
+      ansible.builtin.systemd:
+        name: reflector.service
+        state: started
+        enabled: true
+
