@@ -12,6 +12,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   gather_facts: false
   tasks:
     - name: Install package | fakeroot
+      become: true
       package:
         name: fakeroot
 
