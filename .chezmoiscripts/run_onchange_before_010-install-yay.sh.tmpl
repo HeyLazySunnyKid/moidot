@@ -1,7 +1,9 @@
 {{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
 {{- $aurGalaxy   := list "kewlfft.aur" -}}
 #!/bin/bash
-echo "Install YAY"
+echo "Install yay"
+
+
 
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install packages"
@@ -9,6 +11,10 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   become: false
   gather_facts: false
   tasks:
+    - name: Install package | fakeroot
+      package:
+        name: fakeroot
+
     - name: Create src dir
       file:
         path: ~/.src
