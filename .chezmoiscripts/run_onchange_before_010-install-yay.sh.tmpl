@@ -1,0 +1,24 @@
+{{ if eq .chezmoi.osRelease.name "Arch Linux" }}
+{{ $aurGalaxy   := list "kewlfft.aur" }}
+#!/bin/bash
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: Create src dir
+  file:
+    path: ~/.src
+    state: directory
+  
+- name: Clone yay
+  git:
+    repo: https://aur.archlinux.org/yay-bin.git
+    dest: "~/.src/yay"
+    update: true
+
+- name: Build and install yay
+  command:
+    chdir: "~/.src/yay"
+    cmd: "makepkg -sfi --noconfirm"
+    creates: /usr/bin/yay
+EOF
+
+{{ template "install-galaxy-module" $aurGalaxy }}
+{{ end }}
