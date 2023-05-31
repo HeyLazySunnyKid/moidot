@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+echo "Start {{ .chezmoi.sourceFile }}"
+
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install sway"
+  hosts: localhost
+  gather_facts: false
+  vars: 
+    source_file: {{ .chezmoi.sourceFile }} 
+    install_packages: 
+      # drivers
+      - mesa  
+      - xf86-video-intel
+      # Base sway packets
+      - sway
+      - polkit
+      - swaylock
+      - swayidle
+      # xorg
+      - xorog-xwayland
+      # base terminal emulator
+      - alacritty
+  tasks:
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+EOF
