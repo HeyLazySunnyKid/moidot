@@ -7,12 +7,13 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   become: false
   gather_facts: false
   vars:
-    install-packages:
+    install_packages:
       - fakeroot
     install_galaxy_modules:
       - "kewlfft.aur" 
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+
     - name: Create src dir
       file:
         path: ~/.aur-src
@@ -32,5 +33,4 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 
     {{ include ".chezmoiansible/install-galaxy-module" | nindent 4 }}
 EOF
-
 {{ end }}
