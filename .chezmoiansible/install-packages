@@ -1,0 +1,8 @@
+- assert:
+    - install_packages is defined
+
+- name: Install packages | {{item}}
+  become: true
+  package:
+    name: {{ item }}
+  loop: {{ install_packages }}

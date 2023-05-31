@@ -1,20 +1,21 @@
 {{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
-{{- $archPkgs   := list "reflector" -}}
 #!/bin/bash
 
-{{ template "install-package" $archPkgs }}
-
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
-- name: "Install packages"
+- name: "ArchLinux Post install"
   hosts: localhost
   become: true
   gather_facts: false
+  vars:
+    install_packages: 
+      - reflector
+      - networkmanager
+    enable_services:
+      - reflector.service
+      - networkmanager
   tasks:
-    - name: Reflector | Enable service
-      ansible.builtin.systemd:
-        name: reflector.service
-        state: started
-        enabled: true
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/start-services" | nindent 4 }}
 EOF
 
 {{ end }}

@@ -1,10 +1,44 @@
 #!/bin/bash
 
-{{ $ubuntuPkgs := list "git" "make" "pip" "python" "cargo" }} # TODO: install npm nodejs neovim lunarvim
-{{ $archPkgs   := list "git" "make" "python-pip" "python" "cargo" "npm" "nodejs" "neovim" "ripgrep" }}
+set -e
 
-{{ if eq .chezmoi.osRelease.name "Ubuntu" }}
-{{ template "install-package" $ubuntuPkgs }}
-{{ else if eq .chezmoi.osRelease.name "Arch Linux" }}
-{{ template "install-package" $archPkgs }}
-{{ end }}
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install font"
+  hosts: localhost
+  gather_facts: false
+  vars: 
+    install-packages: 
+      - git  
+      - make
+      - python-pip
+      - python
+      - cargo
+      - npm
+      - nodejs
+      - neovim
+      - ripgrep
+  tasks:
+    {{ include ".chezmoiansible/install-packages" }}
+
+    - name: NerdFont | Create fonts directory 
+      file:
+        path: "~/.local/share/fonts"
+        state: directory
+
+    - name: NerdFont | Check Fonts Exists
+      stat:
+        path: ~/.local/share/fonts/IosevkaTerm.tar.xz
+      register: font
+
+    - name: NerdFont | Install font
+      when: font.stat.exists
+      block:
+        - name: NerdFont | Unpack font
+          ansible.builtin.unarchive:
+            src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/IosevkaTerm.tar.xz
+            dest: ~/.local/share/fonts
+            remote_src: yes
+
+        - name: NerdFont | Update fonts
+          command: fc-cache -fv
+EOF

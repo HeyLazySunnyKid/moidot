@@ -2,14 +2,16 @@
 
 set -e
 
-{{ $pkgs := list "fontconfig" }}
-{{ template "install-package" $pkgs }}
-
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install font"
   hosts: localhost
   gather_facts: false
+  vars: 
+    install-packages: 
+      - fontconfig  
   tasks:
+    {{ include ".chezmoiansible/install-packages" }}
+
     - name: NerdFont | Create fonts directory 
       file:
         path: "~/.local/share/fonts"

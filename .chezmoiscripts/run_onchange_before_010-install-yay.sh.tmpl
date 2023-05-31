@@ -1,15 +1,14 @@
 {{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
-{{- $aurGalaxy   := list "kewlfft.aur" -}}
 #!/bin/bash
-echo "Install yay"
 
-
-
-ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+#! ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install packages"
   hosts: localhost
   become: false
   gather_facts: false
+  vars:
+    install_galaxy_modules:
+      - "kewlfft.aur" 
   tasks:
     - name: Install package | fakeroot
       become: true
@@ -33,7 +32,5 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         cmd: "makepkg -sfi --noconfirm"
         creates: /usr/bin/yay
 EOF
-
-{{ template "install-galaxy-module" $aurGalaxy }}
 
 {{ end }}

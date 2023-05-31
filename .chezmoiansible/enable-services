@@ -1,0 +1,9 @@
+- assert:
+    - enable_services is defined
+
+- name: Enable services | {{item}}
+  ansible.builtin.systemd:
+    name: {{ item }}
+    state: started
+    enabled: true
+  loop: {{ enable_services }}
