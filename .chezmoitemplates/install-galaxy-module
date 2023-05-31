@@ -1,3 +1,0 @@
-{{ range . }}
-ansible-galaxy collection install {{ . }}
-{{ end }}
