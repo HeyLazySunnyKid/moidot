@@ -19,6 +19,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - polkit
       - swaylock
       - swayidle
+      # Desktop Manager
+      - sddm
       # xorg
       - xorg-xwayland
       # base terminal emulator
