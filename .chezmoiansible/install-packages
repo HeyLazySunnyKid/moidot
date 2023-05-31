@@ -2,7 +2,7 @@
     that:
       - "install_packages is defined"
 
-- name: "Install packages | {{item}}"
+- name: "Install packages | {{ source_file }}"
   become: true
   package:
     name: "{{ item }}"

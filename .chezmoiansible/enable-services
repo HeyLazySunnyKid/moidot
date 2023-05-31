@@ -2,9 +2,11 @@
     that:
       - "enable_services is defined"
 
-- name: "Enable services | {{item}}"
+- name: "Enable services | {{ source_file }}"
   ansible.builtin.systemd:
     name: "{{ item }}"
     state: started
     enabled: true
   loop: "{{ enable_services }}"
+  loop_control:
+   label: "{{ item }}"

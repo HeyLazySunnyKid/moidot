@@ -1,12 +1,13 @@
 {{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
 #!/bin/bash
-
+echo "Start {{ .chezmoi.sourceFile }}"
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "ArchLinux Post install"
   hosts: localhost
   become: true
   gather_facts: false
   vars:
+    source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
       - reflector
       - networkmanager
