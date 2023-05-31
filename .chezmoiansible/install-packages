@@ -2,8 +2,8 @@
     that:
       - "install_packages is defined"
 
-- name: Install packages | {{item}}
+- name: "Install packages | {{item}}"
   become: true
   package:
-    name: {{ item }}
-  loop: {{ install_packages }}
+    name: "{{ item }}"
+  loop: "{{ install_packages }}"

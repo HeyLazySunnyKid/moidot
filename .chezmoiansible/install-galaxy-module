@@ -2,8 +2,8 @@
     that:
       - "install_galaxy_modules is defined"
 
-- name: Install Galaxy Modules | {{ item }}
+- name: "Install Galaxy Modules | {{ item }}"
   community.general.ansible_galaxy_install:
     type: collection
-    name: {{ item }}
-  loop: {{ install_galaxy_modules }}
+    name: "{{ item }}"
+  loop: "{{ install_galaxy_modules }}"
