@@ -11,6 +11,10 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     install_packages: 
       - reflector
       - networkmanager
+      - man
+      - less
+      - sed
+      - gawk
     enable_services:
       - reflector.service
       - NetworkManager.service
