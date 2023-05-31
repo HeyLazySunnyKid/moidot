@@ -11,7 +11,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     install_packages: 
       - fontconfig  
   tasks:
-    {{ include ".chezmoiansible/install-packages" | nintend 4 }}
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
 
     - name: NerdFont | Create fonts directory 
       file:

@@ -19,7 +19,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - neovim
       - ripgrep
   tasks:
-    {{ include ".chezmoiansible/install-packages" | nintend 4 }}
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
 
     - name: NerdFont | Create fonts directory 
       file:
