@@ -1,5 +1,6 @@
-- assert:
-    - install_packages is defined
+- ansible.builtin.assert:
+    that:
+      - "install_packages is defined"
 
 - name: Install packages | {{item}}
   become: true

@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
+#!/bin/bash
+
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "ArchLinux Post install"
+  hosts: localhost
+  become: true
+  gather_facts: false
+  vars:
+    install_packages: 
+      - reflector
+      - networkmanager
+    enable_services:
+      - reflector.service
+      - networkmanager
+  tasks:
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/enable-services" | nindent 4 }}
+EOF
+
+{{ end }}

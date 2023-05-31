@@ -1,5 +1,6 @@
-- assert:
-    - install_galaxy_modules is defined
+- ansible.builtin.assert:
+    that:
+      - "install_galaxy_modules is defined"
 
 - name: Install Galaxy Modules | {{ item }}
   community.general.ansible_galaxy_install:

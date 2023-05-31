@@ -1,5 +1,6 @@
-- assert:
-    - enable_services is defined
+- ansible.builtin.assert:
+    that:
+      - "enable_services is defined"
 
 - name: Enable services | {{item}}
   ansible.builtin.systemd:
