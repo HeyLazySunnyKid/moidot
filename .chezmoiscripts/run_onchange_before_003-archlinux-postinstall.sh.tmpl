@@ -1,4 +1,4 @@
-{{/*- if eq .chezmoi.osRelease.name "Arch Linux" -*/}}
+{{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
 #!/bin/bash
 
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
@@ -23,4 +23,4 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         enabled: true
 EOF
 
-{{/* end */}}
+{{ end }}
