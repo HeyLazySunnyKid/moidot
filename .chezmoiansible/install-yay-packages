@@ -1,0 +1,9 @@
+- ansible.builtin.assert:
+    that:
+      - "install_yay_packages is defined"
+
+- name: "Install packages | {{ source_file }}"
+  become: true
+  yay:
+    name: "{{ item }}"
+  loop: "{{ install_yay_packages }}"
