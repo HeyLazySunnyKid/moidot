@@ -21,6 +21,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # base terminal emulator
       - alacritty
     install_yay_packages:
+      - pkg-config
       - gdb
       - ninja
       - gcc
