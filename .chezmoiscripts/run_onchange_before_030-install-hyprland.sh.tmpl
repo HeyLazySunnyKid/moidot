@@ -1,3 +1,4 @@
+{{ if eq .data.dmtype "hyprland" }}
 #!/bin/bash
 
 set -e
@@ -59,3 +60,5 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         name: "sddm.service"
         enabled: true
 EOF
+
+{{ end }}
