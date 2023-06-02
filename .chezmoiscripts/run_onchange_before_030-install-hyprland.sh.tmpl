@@ -21,32 +21,32 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # base terminal emulator
       - alacritty
     install_yay_packages:
-      # - gdb
-      # - ninja
-      # - gcc
-      # - cmake 
-      # - meson 
-      # - libxcb 
-      # - xcb-proto
-      # - xcb-util
-      # - xcb-util-keysyms 
-      # - libxfixes 
-      # - libx11 
-      # - libxcomposite 
-      # - xorg-xinput 
-      # - libxrender 
-      # - pixman 
-      # - wayland-protocols 
-      # - cairo 
-      # - pango 
-      # - seatd 
-      # - libxkbcommon 
-      # - xcb-util-wm 
-      # - xorg-xwayland 
-      # - libinput 
-      # - libliftoff 
-      # - libdisplay-info 
-      # - cpio
+      - gdb
+      - ninja
+      - gcc
+      - cmake 
+      - meson 
+      - libxcb 
+      - xcb-proto
+      - xcb-util
+      - xcb-util-keysyms 
+      - libxfixes 
+      - libx11 
+      - libxcomposite 
+      - xorg-xinput 
+      - libxrender 
+      - pixman 
+      - wayland-protocols 
+      - cairo 
+      - pango 
+      - seatd 
+      - libxkbcommon 
+      - xcb-util-wm 
+      - xorg-xwayland 
+      - libinput 
+      - libliftoff 
+      - libdisplay-info 
+      - cpio
       - hyprland-git
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
