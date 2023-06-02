@@ -3,6 +3,7 @@
       - "enable_services is defined"
 
 - name: "Enable services | {{ source_file }}"
+  become: yes
   ansible.builtin.systemd:
     name: "{{ item }}"
     state: started
