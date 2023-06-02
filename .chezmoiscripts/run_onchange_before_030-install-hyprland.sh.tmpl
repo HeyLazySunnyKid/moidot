@@ -50,6 +50,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - hyprland-git
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
 
     - name: "Enable services | {{ print "{{ source_file }}" }}"
       become: yes
