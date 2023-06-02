@@ -1,4 +1,6 @@
 {{- if eq .dmtype "hyprland" -}}
+### ATENTION!!! THIS IS NOT WORK AT ALL ON NVIDIA
+
 #!/bin/bash
 
 set -e
@@ -49,7 +51,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - libliftoff 
       - libdisplay-info 
       - cpio
-      - hyprland-git
+      - patch
+      - hyprland-nvidia-git
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
