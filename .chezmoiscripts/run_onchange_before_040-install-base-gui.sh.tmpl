@@ -14,6 +14,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # Browsers
       - qutebrowser
       - chromium
+      # Docs
+      - obsidian
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
 EOF
