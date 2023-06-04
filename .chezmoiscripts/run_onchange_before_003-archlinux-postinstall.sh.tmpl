@@ -25,6 +25,8 @@ EOF
 if  [ ! -d "$HOME/Downloads" ]; then  
   echo "Create user dirs"
   LC_ALL=C xdg-user-dirs-update --force
+  mkdir $HOME/Projects
+  mkdir $HOME/tmp
 fi
 
 {{ end }}
