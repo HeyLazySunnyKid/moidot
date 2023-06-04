@@ -1,22 +1,25 @@
-{{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
 #!/bin/bash
 echo "Start {{ .chezmoi.sourceFile }}"
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
-- name: "ArchLinux Post install"
+- name: "Install Base Cli utilities"
   hosts: localhost
   become: true
   gather_facts: false
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
-      - reflector
-      - networkmanager
-    enable_services:
-      - reflector.service
-      - NetworkManager.service
+      # Base
+      - man
+      - less
+      - sed
+      - gawk
+      # Source Version Control
+      - git
+      # Shell
+      - tmux
+      - zsh
+      # Password manager
+      - gopass
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
-    {{ include ".chezmoiansible/enable-services" | nindent 4 }}
 EOF
-
-{{ end }}
