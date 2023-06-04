@@ -5,6 +5,14 @@ set -e
 
 echo "Start {{ .chezmoi.sourceFile }}"
 
+# TODO before for nvidia: 
+# install nvidia-dkms
+# add systemd-boot param
+# install linux-headers
+# create module mkinitcpio
+# create /etc/modprobe.d/nvidia.conf
+# 
+
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install hyprland"
   hosts: localhost
@@ -13,10 +21,14 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
       # drivers
-      - mesa  
-      - xf86-video-intel
+      # - mesa  
+      # - xf86-video-intel
       # Base hyprland packets
       - polkit
+      # Base
+      - qt5-wayland
+      - qt5ct
+      - libva
       # Desktop Manager
       - sddm
       # base terminal emulator
@@ -51,6 +63,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - cpio
       - patch
       - hyprland-nvidia-git
+      # nvidia special
+      - nvidia-vaapi-driver-git
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
