@@ -24,7 +24,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       register: font
 
     - name: NerdFont | Install font
-      when: font.stat.exists
+      when: not font.stat.exists
       block:
         - name: NerdFont | Unpack font
           ansible.builtin.unarchive:
