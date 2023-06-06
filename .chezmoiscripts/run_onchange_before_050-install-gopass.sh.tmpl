@@ -1,0 +1,64 @@
+#!/bin/bash
+echo "Start {{ .chezmoi.sourceFile }}"
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install Base Cli utilities"
+  hosts: localhost
+  become: true
+  gather_facts: false
+  vars:
+    source_file: {{ .chezmoi.sourceFile }} 
+    install_packages: 
+      - git
+      - gnupg
+      - gopass
+      - rng-tools
+      - expect
+  tasks:
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+
+- name: "Install Base Cli utilities"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Clone .password-store
+      ansible.builtin.git:
+        repo: 'ssh://git@gitea.heylazysunnykid.ru:222/heylazysunnykid/pass.git'
+        dest: "$HOME/.password-store"
+        single_branch: yes
+        version: main
+        accept_newhostkey: true
+        key_file: "~/.ssh/id_rsa"
+EOF
+
+#HERE ASKS SECRET
+echo "Input gopass master key:"
+gpg2 --textmode --pinentry-mode loopback --import $HOME/.password-store/.keys/secretpasskey.asc
+
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install Base Cli utilities"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Get fingerprint of installed key
+      shell: gpg2 -n -q --import --import-options import-show "$HOME/.password-store/.keys/secretpasskey.asc" | sed -ne '2{s/\s//gp;}'
+      register: fingerprint
+
+    - name: Make public key trusted
+      no_log: true
+      shell: |
+        spawn gpg2 --textmode --pinentry-mode loopback --edit-key {{ print "{{ fingerprint.stdout }}" }}
+
+        match_max 100000
+        expect -exact "gpg> "
+        send -- "trust\r"
+        expect -exact "Your decision? "
+        send -- "5\r"
+        expect -exact "Do you really want to set this key to ultimate trust? (y/N) "
+        send -- "y\r"
+        expect -exact "gpg> "
+        send -- "quit\r"
+        expect eof
+      args:
+        executable: /usr/bin/expect
+
+EOF
