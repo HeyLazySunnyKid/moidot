@@ -8,21 +8,9 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
-      # Source Version Control
-      - git
-      - git-lfs
-      # Base
-      - man
-      - less
-      - tree
-      - sed
-      - gawk
-      - openssh
-      - gnupg
-      # Shell
-      - tmux
-      - zsh
+      # Messging
+      - discord
+  hy
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
-
 EOF
