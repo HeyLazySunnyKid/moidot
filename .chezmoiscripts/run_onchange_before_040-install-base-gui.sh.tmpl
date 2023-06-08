@@ -8,6 +8,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
+      # Wallpapaper
+      - hyprpaper
       # Wayland utilities
       - wofi
       - waybar
@@ -16,17 +18,18 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - chromium
       # Docs
       - obsidian
-      # cli gui
+      # Cli for Gui
       - wl-clipboard
       # notify-daemon
       - mako
       # sound
       - pavucontrol
-      # screenshare
       - pipewire
       - wireplumber
-      # wallpapaper
-      - hyprpaper
+      - pipewire-pulse
+      - pipewire-alsa
+      # Player
+      - mpd
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
 EOF

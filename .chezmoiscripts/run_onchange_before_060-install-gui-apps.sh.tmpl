@@ -10,7 +10,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     install_packages: 
       # Messging
       - discord
-  hy
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
 EOF
