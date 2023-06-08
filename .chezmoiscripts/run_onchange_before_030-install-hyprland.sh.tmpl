@@ -25,15 +25,19 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # - xf86-video-intel
       # Base hyprland packets
       - polkit
+      # Ask password
+      - polkit-kde-agent 
       # Base
       - qt5-wayland
+      - qt6-wayland
       - qt5ct
       - libva
       # Desktop Manager
       - sddm
       # base terminal emulator
       - alacritty
-      - hyprpaper
+      # Some special integrations
+      - xdg-desktop-portal-hyprland
     install_yay_packages:
       - pkg-config
       - gdb
@@ -63,18 +67,26 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - libdisplay-info 
       - cpio
       - patch
-      - hyprland-nvidia-git
       # nvidia special
+      - hyprland-nvidia-git
       - nvidia-vaapi-driver-git
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
 
     - name: "Enable services | {{ print "{{ source_file }}" }}"
-      become: yes
+      become: true
       ansible.builtin.systemd:
         name: "sddm.service"
         enabled: true
+
+    - name: "Enable services | {{ print "{{ source_file }}" }}"
+      ansible.builtin.systemd:
+        name: xdg-desktop-portal-hyprland
+        scope: user
+        state: started
+        enabled: true
+
 EOF
 
 {{ end }}

@@ -19,6 +19,18 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/enable-services" | nindent 4 }}
 
+- name: "ArchLinux Post install [LOCAL]"
+  hosts: localhost
+  become: false
+  gather_facts: true
+  tasks:
+    - name: Add to input group
+      become: true
+      ansible.builtin.user:
+        name: "{{ print "{{ ansible_user_id }}" }}"
+        groups: input
+        append: true
+
 EOF
 
 # Create user dirs
