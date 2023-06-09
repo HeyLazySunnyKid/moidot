@@ -15,9 +15,15 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     enable_services:
       - reflector.service
       - NetworkManager.service
+      - systemd-timesyncd.service
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/enable-services" | nindent 4 }}
+
+    - name: Set hardware and software clock
+      community.general.timezone:
+        name: Europe/Moscow
+        hwclock: local
 
 - name: "ArchLinux Post install [LOCAL]"
   hosts: localhost
