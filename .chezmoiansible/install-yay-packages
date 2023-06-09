@@ -3,7 +3,6 @@
       - "install_yay_packages is defined"
 
 - name: "Install packages | {{ source_file }}"
-  # become: true
   kewlfft.aur.aur:
     use: yay
     name: "{{ item }}"
