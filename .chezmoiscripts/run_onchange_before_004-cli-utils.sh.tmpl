@@ -25,6 +25,9 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # perfomance
       - iotop
       - htop
+      # better cli
+      - fd
+      - bat
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
 
