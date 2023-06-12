@@ -8,41 +8,38 @@
     // "modules-left": ["hyprland/window"],
     "modules-left": ["wlr/workspaces"],
     //"modules-cencwter": ["wlr/workspaces"],
-    // "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "hyprland/language", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "hyprland/language", "clock"],
+    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "hyprland/language", "clock" ],
     // Modules configuration
     "wlr/workspaces": {
-    //    "format": "{name}: {icon}",
         "format": "  {icon}  ",
         "on-click": "activate",
+	"persistent_workspaces": {
+          "1": [],
+	  "2": [],
+	  "3": [],
+	  "4": []
+        },
         "format-icons": {
-        //    "1": "",
-        //    "2": "",
-        //    "3": "",
-        //    "4": "",
-        //    "5": "",
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
+            "1": "",
+            "2": "󰷈",
+            "3": "",
+            "4": "",
             "urgent": "",
             "active": "",
             "default": ""
-    //         "default": ""
         },
         "sort-by-number": true
     },
 
-    // "keyboard-state": {
-    //     "numlock": true,
-    //     "capslock": true,
-    //     "format": "{name} {icon}",
-    //     "format-icons": {
-    //         "locked": "",
-    //         "unlocked": ""
-    //     }
-    // },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
@@ -105,31 +102,43 @@
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
-    // "battery": {
-    //     "states": {
-    //         // "good": 95,
-    //         "warning": 30,
-    //         "critical": 15
-    //     },
-    //     "format": "{capacity}% {icon}",
-    //     "format-charging": "{capacity}% ",
-    //     "format-plugged": "{capacity}% ",
-    //     "format-alt": "{time} {icon}",
-    //     // "format-good": "", // An empty format will hide the module
-    //     // "format-full": "",
-    //     "format-icons": ["", "", "", "", ""]
-    // },
-    // "battery#bat2": {
-    //     "bat": "BAT2"
-    // },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "({signalStrength}%) ",
+        "format-icons": ["1", "2", "3", "4", "5"],
+        "format-ethernet": "󰈁",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-disconnected": "󰌙",
+        "format-alt": "{ifname}: {ipaddr}/{cidr} via {gwaddr} 󰌘",
+        "tooltip": false,
+        "on-click-right": "nm-connection-editor"
+    },
+    // Server.ru VPN
+    "network#vpn1": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-connected": "󰈁",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-disconnected": "󰌙",
+        "format-alt": "{ifname}: {ipaddr}/{cidr} via {gwaddr} 󰌘",
+        "tooltip": false,
+        "on-click-right": "nm-connection-editor"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

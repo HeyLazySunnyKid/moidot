@@ -10,7 +10,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # Wallpapaper
       - hyprpaper
       # Wayland utilities
-      - wofi
+      - fuzzel
       - waybar
       # Browsers
       - qutebrowser
@@ -29,8 +29,11 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - pipewire-alsa
       # Player
       - mpd
+      # Network
+      - nm-connection-editor
     install_yay_packages:
       - hyprpicker-git
+      - tessen # fuzzel pass menu
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
