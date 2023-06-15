@@ -34,6 +34,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     install_yay_packages:
       - hyprpicker-git
       - tessen # fuzzel pass menu
+      - clipman-git # clipboard manager for wayland
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
