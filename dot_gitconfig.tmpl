@@ -1,5 +1,16 @@
 [user]
   email = {{ .Email }}
   name = {{ .Name }} {{ .Surname }}
+[alias]
+	st = status -s
+	go = checkout
+	cm = commit
+	cmm = commit -m
+	co = checkout
+	br = branch
+	rb = rebase
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --graph
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	drop = push origin --delete
 [core]
   excludesfile = ~/.gitexcludes

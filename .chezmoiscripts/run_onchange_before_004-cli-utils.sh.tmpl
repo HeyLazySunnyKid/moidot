@@ -3,7 +3,6 @@ echo "Start {{ .chezmoi.sourceFile }}"
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install Base Cli utilities"
   hosts: localhost
-  become: true
   gather_facts: false
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
@@ -22,7 +21,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # Shell
       - tmux
       - zsh
-      - starship
+      - zsh-theme-powerlevel10k
       # perfomance
       - iotop
       - htop
@@ -31,8 +30,22 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - bat
       - ripgrep
       # autocmd
+      - fzf
       - navi
+    install_bashible:
+      - name: zimfw
+        cmd: |
+          curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+        creates: ~/.zim/init.zsh
+
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
 
+    {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
+
+    - name: Change defaul shell
+      become: true
+      user: 
+        name: {{ .chezmoi.username }}
+        shell: /bin/zsh
 EOF
