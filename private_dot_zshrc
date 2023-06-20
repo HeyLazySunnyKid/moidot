@@ -131,6 +131,7 @@ unset key
 # {{{  Custom zsh configuration
 
 # Set env
+export PATH=$PATH:~/.local/bin
 export EDITOR=lvim
 
 # }}}
