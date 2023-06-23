@@ -1,3 +1,7 @@
 Heynotes:
   type: git-repo
   url: ssh://git@gitea.heylazysunnykid.ru:222/heylazysunnykid/heynotes.git
+
+.cheats:
+  type: git-repo
+  url: ssh://git@gitea.heylazysunnykid.ru:222/heylazysunnykid/navi-cheats.git

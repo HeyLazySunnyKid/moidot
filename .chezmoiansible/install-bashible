@@ -2,15 +2,14 @@
     that:
       - "item.name is defined"
       - "item.cmd is defined"
-      - "item.creates is defined"
   loop: "{{ install_bashible }}"
 
 - name: "Install bashible | {{ source_file }}"
   ansible.builtin.shell: |
     {{ item.cmd }}
   args:
-    creates: "{{ item.creates }}"
-    executable: /bin/bash
+    creates: "{{ item.creates | default(omit) }}"
+    executable: "{{ item.shell | default('/bin/bash') }}" 
   loop: "{{ install_bashible }}"
   loop_control:
     label: "{{ item.name }}"

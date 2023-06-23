@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "Start {{ .chezmoi.sourceFile }}"
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install Base Cli utilities after config apply"
+  hosts: localhost
+  gather_facts: false
+  vars:
+    source_file: {{ .chezmoi.sourceFile }} 
+    install_bashible:
+      - name: zimfw powerlever10k module
+        cmd: . ~/.zshrc && zimfw install
+        shell: /bin/zsh
+
+  tasks:
+    {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
+EOF
+
