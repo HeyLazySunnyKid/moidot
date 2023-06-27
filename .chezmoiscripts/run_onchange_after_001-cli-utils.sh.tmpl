@@ -10,7 +10,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - name: zimfw powerlever10k module
         cmd: . ~/.zshrc && zimfw install
         shell: /bin/zsh
-
   tasks:
     {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
 EOF

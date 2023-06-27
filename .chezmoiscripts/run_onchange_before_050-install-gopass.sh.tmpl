@@ -3,7 +3,6 @@ echo "Start {{ .chezmoi.sourceFile }}"
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install Base Cli utilities"
   hosts: localhost
-  become: true
   gather_facts: false
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
