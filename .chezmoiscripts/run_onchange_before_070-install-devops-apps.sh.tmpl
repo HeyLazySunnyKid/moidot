@@ -13,8 +13,17 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - name: k3d
         cmd: curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
         creates: /usr/local/bin/k3d
-      
+    enable_services:
+      - docker
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
+    {{ include ".chezmoiansible/enable-services" | nindent 4 }}
+
+    - name: Add docker group
+      become: true
+      user: 
+        name: {{ .chezmoi.username }}
+        groups: docker
+        append: yes
 EOF
