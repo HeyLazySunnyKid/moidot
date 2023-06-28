@@ -143,6 +143,7 @@ export EDITOR=lvim
 
 # zsh
 eval "$(navi widget zsh)"
+eval "$(zoxide init zsh)"
 
 # }}}
 

@@ -1,0 +1,19 @@
+- ansible.builtin.assert:
+    that:
+      - "setup_completion is defined"
+
+- name: "Setup completion | {{ source_file }}"
+  ansible.builtin.shell: |
+    {{ item.value }}
+  with_dict: "{{ setup_completion }}"
+  changed_when: false
+  register: _completion
+
+
+- name: "Setup completion | Copy completion file {{ source_file }}"
+  ansible.builtin.copy:
+    content: "{{ item.stdout }}"
+    dest: $HOME/.zim/modules/zsh-completions/src/_{{ item.item.key }}
+  with_items: "{{ _completion.results }}"
+
+
