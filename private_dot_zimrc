@@ -40,6 +40,9 @@ zmodule zsh-users/zsh-completions --fpath src
 # completion must be sourced after all modules that add completion definitions.
 zmodule completion
 
+zmodule romkatv/powerlevel10k --use degit
+zmodule ohmyzsh/ohmyzsh --root plugins/fzf
+
 #
 # Modules that must be initialized last
 #
@@ -55,4 +58,3 @@ zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
 
 
-zmodule romkatv/powerlevel10k --use degit
