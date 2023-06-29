@@ -7,8 +7,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
     install_bashible:
-      - name: zimfw powerlever10k module
-        cmd: . ~/.zshrc && zimfw install
+      - name: zimfw install modules 
+        cmd: . ~/.zshrc && zimfw install && fast-theme forest
         shell: /bin/zsh
   tasks:
     {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
