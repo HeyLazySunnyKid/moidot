@@ -1,0 +1,22 @@
+- ansible.builtin.assert:
+    that:
+      - "system_link is defined"
+
+- name: "System link | Create folder | {{ source_file}}"
+  become: true
+  file:
+    path: "{{ item | dirname }}"
+    state: directory
+  loop: "{{ system_link }}"
+
+- set_fact:
+    home: "{{ ansible_env.HOME }}"
+
+- name: "System link | {{ source_file }}"
+  become: true
+  file:
+    src: "{{ home }}/.root{{ item }}"
+    dest: "{{ item }}"
+    state: link
+    force: true
+  loop: "{{ system_link }}"

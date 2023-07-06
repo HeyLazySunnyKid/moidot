@@ -166,3 +166,5 @@ _fzf_comprun() {
 
 alias edit=$EDITOR
 alias k=kubectl
+alias c=wl-copy
+alias p=wl-paste

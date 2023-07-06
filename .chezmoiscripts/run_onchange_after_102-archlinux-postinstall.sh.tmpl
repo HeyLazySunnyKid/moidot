@@ -1,0 +1,27 @@
+{{- if eq .chezmoi.osRelease.name "Arch Linux" -}}
+#!/bin/bash
+echo "Start {{ .chezmoi.sourceFile }}"
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "ArchLinux Post install"
+  hosts: localhost
+  become: true
+  gather_facts: true
+  vars:
+    source_file: {{ .chezmoi.sourceFile }} 
+    install_bashible:
+      - name: setup snapper
+        cmd:  sudo snapper -c root create-config /
+        creates: /etc/snapper/configs/root
+      - name: Create base snapshot
+        cmd:  sudo snapper -c root create -d "**Base system install**"
+        creates: /.snapshots/1
+    enable_services:
+      - snapper-timeline.timer
+      - snapper-cleanup.timer
+
+  tasks:
+    {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
+    {{ include ".chezmoiansible/enable-services" | nindent 4 }}
+EOF
+
+{{ end }}

@@ -4,7 +4,6 @@ echo "Start {{ .chezmoi.sourceFile }}"
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "ArchLinux Post install"
   hosts: localhost
-  become: true
   gather_facts: false
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
@@ -12,6 +11,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - reflector
       - networkmanager
       - xdg-user-dirs
+      - snapper
+      - snap-pac
     enable_services:
       - reflector.service
       - NetworkManager.service
@@ -21,13 +22,13 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     {{ include ".chezmoiansible/enable-services" | nindent 4 }}
 
     - name: Set hardware and software clock
+      become: yes
       community.general.timezone:
         name: Europe/Moscow
         hwclock: local
 
 - name: "ArchLinux Post install [LOCAL]"
   hosts: localhost
-  become: false
   gather_facts: true
   tasks:
     - name: Add to input group
