@@ -20,6 +20,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
           sudo cp /usr/share/applications/org.qutebrowser.qutebrowser.desktop /usr/share/applications/org.qutebrowser.qutework.desktop && \
           sudo sed -i -E 's/Name=qutebrowser/Name=qutework/g' /usr/share/applications/org.qutebrowser.qutework.desktop && \
           sudo sed -i -E 's/Exec=qutebrowser(.*)/Exec=sh -c "qutebrowser -B $HOME\1/' /usr/share/applications/org.qutebrowser.qutework.desktop
+        creates: /usr/share/applications/org.qutebrowser.qutework.desktop
     setup_completion:
       kubectl: kubectl completion zsh
       k3d: k3d completion zsh
