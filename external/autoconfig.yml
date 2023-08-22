@@ -9,6 +9,7 @@ settings:
   auto_save.session:
     global: true
   content.notifications.enabled:
+    https://web.telegram.org: true
     https://www.tinkoff.ru: false
     https://www.youtube.com: true
   tabs.position:
