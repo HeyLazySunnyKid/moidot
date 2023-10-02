@@ -132,16 +132,6 @@
       "tooltip": false,
       "on-click-right": "nm-connection-editor"
   },
-  // Server.ru VPN
-  "network#vpn1": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-connected": "󰈁",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-disconnected": "󰌙",
-    "format-alt": "{ifname}: {ipaddr}/{cidr} via {gwaddr} 󰌘",
-    "tooltip": false,
-    "on-click-right": "nm-connection-editor"
-  },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "{volume}% {icon} {format_source}",

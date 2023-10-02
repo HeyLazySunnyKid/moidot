@@ -9,8 +9,11 @@ settings:
   auto_save.session:
     global: true
   content.notifications.enabled:
+    https://drivee.loop.ru: true
     https://web.telegram.org: true
     https://www.tinkoff.ru: false
     https://www.youtube.com: true
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: true
   tabs.position:
     global: left
