@@ -9,6 +9,10 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     install_packages: 
       # Messging
       - discord
+    install_bashible: []
+    #   - name: ventoy
+    #     #TODO: create arch pkg
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
 EOF

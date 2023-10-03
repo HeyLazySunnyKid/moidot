@@ -36,7 +36,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     install_yay_packages:
       - waybar-hyprland-git
       - tessen # fuzzel pass menu
-      - clipman-git # clipboard manager for wayland
+      # TODO: Find alternative
+      #- clipman-git # clipboard manager for wayland
       # Fuzzel nm-applet replacement
       - networkmanager-dmenu-git
   tasks:

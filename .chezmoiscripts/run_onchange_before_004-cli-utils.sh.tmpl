@@ -19,6 +19,10 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - openssh
       - gnupg
       - bind-tools 
+      # network
+      - inetutils
+      - curl
+      - wget
       # Shell
       - tmux
       - zsh
