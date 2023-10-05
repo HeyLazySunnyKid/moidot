@@ -40,6 +40,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       #- clipman-git # clipboard manager for wayland
       # Fuzzel nm-applet replacement
       - networkmanager-dmenu-git
+      # File manager
+      - sigma-file-manager-bin
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
