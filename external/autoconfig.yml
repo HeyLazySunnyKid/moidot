@@ -8,12 +8,19 @@ config_version: 2
 settings:
   auto_save.session:
     global: true
+  content.media.audio_capture:
+    https://meet.google.com: true
+  content.media.video_capture:
+    https://meet.google.com: true
   content.notifications.enabled:
+    https://calendar.google.com: true
     https://drivee.loop.ru: true
+    https://meet.google.com: true
     https://web.telegram.org: true
     https://www.tinkoff.ru: false
     https://www.youtube.com: true
   content.register_protocol_handler:
+    https://calendar.google.com?cid=%25s: true
     https://mail.google.com?extsrc=mailto&url=%25s: true
   tabs.position:
     global: left

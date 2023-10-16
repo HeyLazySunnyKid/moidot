@@ -5,31 +5,30 @@
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["wlr/workspaces"],
-
-  // "modules-center": ["wlr/workspaces"],
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
   "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "hyprland/language", "clock" ],
-
-  // Modules configuration
-  "wlr/workspaces": {
-    "format": "  {icon}  ",
-    "on-click": "activate",
-    "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": []
-    },
-    "format-icons": {
-      "1": "",
-      "2": "󰷈",
-      "3": "",
-      "4": "",
-      "urgent": "",
-      "active": "",
-      "default": ""
-    },
-    "sort-by-number": true
+  "hyprland/workspaces": {
+     "format": "{icon}",
+     "on-click": "activate",
+     "persistent_workspaces": {
+       "1": [],
+       "2": [],
+       "3": [],
+       "4": []
+     },
+     "format-icons": {
+       "1": "",
+       "2": "󰷈",
+       "3": "",
+       "4": "",
+       "urgent": "",
+       "active": "",
+       "default": ""
+     },
+     "sort-by-number": true,
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
   "keyboard-state": {
       "numlock": true,
