@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "Start {{ .chezmoi.sourceFile }}"
+
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install DevOps utilities"
+  hosts: localhost
+  gather_facts: false
+  vars:
+    source_file: {{ .chezmoi.sourceFile }} 
+    install_packages:
+      - python-pdftotext
+    install_yay_packages:
+      - nvidia-container-toolkit
+  tasks:
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
+EOF

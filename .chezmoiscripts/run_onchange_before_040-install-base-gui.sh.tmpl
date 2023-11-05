@@ -10,15 +10,16 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # Wallpapaper
       - hyprpaper
       # Wayland utilities
-      - fuzzel
+      - fuzzel # fuzzi runner dmenu analog
+      - grim  # Screenshoot tool
       # Browsers
       - qutebrowser
       - chromium
       # Docs
       - obsidian
       # Cli for Gui
-      - wl-clipboard
-      - wtype
+      - wl-clipboard # cli for clipboard
+      - wtype # cli simulate keyboard 
       # notify-daemon
       - mako
       # sound
@@ -34,10 +35,13 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - networkmanager-l2tp
       - networkmanager-strongswan
     install_yay_packages:
-      - waybar-hyprland-git
+      - grimblast # Taking screenhsot
+      - waybar-hyprland-git  # panel
       - tessen # fuzzel pass menu
-      # TODO: Find alternative
       - clipman # clipboard manager for wayland
+      - slurp # Select region for screenshoot
+      - swaylock
+      - wlogout # logout screen
       # Fuzzel nm-applet replacement
       - networkmanager-dmenu-git
       # File manager

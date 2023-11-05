@@ -7,6 +7,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
+      - which
       # Source Version Control
       - git
       - git-lfs
@@ -19,6 +20,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - openssh
       - gnupg
       - bind-tools 
+      - jq
       # network
       - inetutils
       - curl
@@ -27,6 +29,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - tmux
       - zsh
       - zsh-theme-powerlevel10k
+      - direnv
       # perfomance
       - iotop
       - htop

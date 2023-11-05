@@ -144,6 +144,7 @@ export EDITOR=lvim
 # zsh
 eval "$(navi widget zsh)"
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
 
 # Improve fzf completition preview
 _fzf_comprun() {
