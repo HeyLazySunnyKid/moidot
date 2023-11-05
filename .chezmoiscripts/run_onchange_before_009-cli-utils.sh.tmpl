@@ -49,11 +49,12 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         cmd: |
           curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
         creates: ~/.zim/init.zsh
-
+    install_yay_packages:
+      - downgrade # archlinux downgrade bash script
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
-
     {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
+    {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
 
     - name: Change defaul shell
       become: true
