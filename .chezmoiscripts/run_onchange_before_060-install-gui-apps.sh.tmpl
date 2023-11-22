@@ -11,10 +11,20 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - discord
       # Video Edit Tool
       - kdenlive
+      # Office
+      - libreoffice-still
+      - hunspell
+      - hunspell-en_us
+      - hunspell-ru
+      - hyphen
+      - hyphen-en
+    install_yay_packages:
+      - hyphen-ru
     install_bashible: []
     #   - name: ventoy
     #     #TODO: create arch pkg
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
 EOF

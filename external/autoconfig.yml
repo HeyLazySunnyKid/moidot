@@ -15,6 +15,7 @@ settings:
   content.notifications.enabled:
     https://calendar.google.com: true
     https://drivee.loop.ru: true
+    https://lifehacker.ru: false
     https://meet.google.com: true
     https://web.telegram.org: true
     https://www.tinkoff.ru: false

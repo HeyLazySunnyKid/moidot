@@ -31,7 +31,14 @@ lvim.plugins = {
   },{
     "JoosepAlviste/nvim-ts-context-commentstring",
     event = "BufRead",
+  },{
+    "leoluz/nvim-dap-go",
+
+    config = function()
+      require('dap-go').setup()
+    end
   }
 }
+
 
 lvim.colorscheme = "everforest"
