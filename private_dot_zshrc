@@ -138,7 +138,7 @@ unset key
 # {{{  Custom zsh configuration
 
 # Set env
-export PATH=$PATH:~/.local/bin
+export PATH="$HOME/.local/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export EDITOR=lvim
 
 # zsh

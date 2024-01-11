@@ -70,6 +70,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # nvidia special
       - hyprland-nvidia-git
       - nvidia-vaapi-driver-git
+      # Capture tool
+      - flameshot-git
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
