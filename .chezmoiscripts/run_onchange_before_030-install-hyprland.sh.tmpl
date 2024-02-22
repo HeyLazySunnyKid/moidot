@@ -1,11 +1,10 @@
-{{- if eq .dmtype "hyprland" -}}
 #!/bin/bash
 
 set -e
 
 echo "Start {{ .chezmoi.sourceFile }}"
 
-# TODO before for nvidia: 
+# TODO: before for nvidia: 
 # install nvidia-dkms
 # add systemd-boot param
 # install linux-headers
@@ -20,9 +19,13 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars: 
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
-      # drivers
-      # - mesa  
-      # - xf86-video-intel
+{{- if ne .nvidia "yes" -}}
+      # video drivers
+      - mesa  
+      - lib32mesa
+      - libva-intel-driver
+{{ end }}
+      # - xf86-video-intel # not recomended
       # Base hyprland packets
       - polkit
       # Ask password
@@ -67,9 +70,11 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - libdisplay-info 
       - cpio
       - patch
+{{- if eq .nvidia "yes" -}}
       # nvidia special
       - hyprland-nvidia-git
       - nvidia-vaapi-driver-git
+{{ end }}
       # Capture tool
       - flameshot-git
   tasks:
@@ -88,7 +93,4 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         scope: user
         state: started
         enabled: true
-
 EOF
-
-{{ end }}
