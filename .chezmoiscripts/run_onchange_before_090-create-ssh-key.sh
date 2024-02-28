@@ -17,7 +17,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       path: ~/.ssh/id_rsa   
 EOF
 
-qutebrowser "https://gitea.heylazysunnykid.ru/user/settings/keys"
-qutebrowser "https://github.com/settings/keys"
+! chromium "https://gitea.heylazysunnykid.ru/user/settings/keys" &
+! chromium "https://github.com/settings/keys" &
 cat "$HOME/.ssh/id_rsa.pub" | wl-copy
 read  -n 1 -p "Pubkey in clipboard. Add to repo keys and press ENTER" 

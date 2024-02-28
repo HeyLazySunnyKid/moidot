@@ -9,8 +9,12 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages:
       - python-pdftotext
+{{ if eq .nvidia "yes" }}
     install_yay_packages:
       - nvidia-container-toolkit
+{{ else }}
+    install_yay_packages: []
+{{ end }}
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}

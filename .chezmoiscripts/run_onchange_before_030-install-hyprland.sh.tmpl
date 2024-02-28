@@ -19,10 +19,9 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars: 
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
-{{- if ne .nvidia "yes" -}}
+{{ if ne .nvidia "yes" }}
       # video drivers
       - mesa  
-      - lib32mesa
       - libva-intel-driver
 {{ end }}
       # - xf86-video-intel # not recomended
@@ -70,10 +69,12 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - libdisplay-info 
       - cpio
       - patch
-{{- if eq .nvidia "yes" -}}
+{{ if eq .nvidia "yes" }}
       # nvidia special
       - hyprland-nvidia-git
       - nvidia-vaapi-driver-git
+{{ else }}
+      - hyprland
 {{ end }}
       # Capture tool
       - flameshot-git
