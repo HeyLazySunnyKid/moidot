@@ -7,14 +7,13 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
+      # libs
+      - kwayland5
       # Wallpapaper
       - hyprpaper
       # Wayland utilities
       - fuzzel # fuzzi runner dmenu analog
       - grim  # Screenshoot tool
-      # Browsers
-      - qutebrowser
-      - chromium
       # Docs
       - obsidian
       # Cli for Gui
@@ -35,6 +34,10 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - networkmanager-l2tp
       - networkmanager-strongswan
     install_yay_packages:
+      # Browsers
+      - qutebrowser
+      - {{ .browser }}
+      # Other
       - grimblast # Taking screenhsot
       - waybar  # panel
       - tessen # fuzzel pass menu

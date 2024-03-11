@@ -19,7 +19,29 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - reflector.service
       - NetworkManager.service
       - systemd-timesyncd.service
+      - systemd-resolved
   tasks:
+    - name: Resolved DNS Settings
+      become: yes
+      block:
+      - name: DNS
+        ansible.builtin.lineinfile:
+          path: /etc/systemd/resolved.conf
+          regexp: '^#?DNS=.*'
+          line: DNS=8.8.8.8
+
+      - name: Domains
+        ansible.builtin.lineinfile:
+          path: /etc/systemd/resolved.conf
+          regexp: '^#?Domains=.*'
+          line: Domains=~.
+
+      - name: Domains
+        ansible.builtin.lineinfile:
+          path: /etc/systemd/resolved.conf
+          regexp: '^#?ReadEtcHosts=.*'
+          line: ReadEtcHosts=yes
+
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/enable-services" | nindent 4 }}
 
