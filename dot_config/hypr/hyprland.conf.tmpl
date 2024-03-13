@@ -128,6 +128,8 @@ bind = $mainMod, C, exec, clipman pick --print0 --tool=CUSTOM --tool-args="fuzze
 bind = $mainMod, P, exec, tessen # fuzzel pass
 bind = $mainMod, I, exec, networkmanager_dmenu # fuzzel network manager
 bind = , Print, exec, flameshot gui # Screenshoot tool
+bind = $mainMod SHIFT, Z, exec, hyprctl keyword monitor eDP-1, 2880x1800,0x0,1  
+bind = $mainMod , Z, exec, hyprctl keyword monitor eDP-1, disable
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, L, movefocus, l

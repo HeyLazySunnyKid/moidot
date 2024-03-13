@@ -23,6 +23,9 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - bind-tools 
       - jq
       - pwgen
+      # Archive
+      - zip
+      - unzip
       # network
       - inetutils
       - curl
