@@ -2,12 +2,12 @@
 data:
   # Description: use nvidia drivers
   # Values: no yes
-  nvidia: no    
+  nvidia: yes    
   # Values: no yes
-  asus: yes
+  asus: no
   # Description: choose chrome broswer
   # Values: google-chrome chromium
-  browser: google-chrome
+  browser: chromium
   name: Denis
   surname: Kaliuzhny
-  email: denis.kaliuzhny@indels.org
+  email: deniskaspy@gmail.com

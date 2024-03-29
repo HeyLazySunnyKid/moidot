@@ -33,7 +33,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       command:
         chdir: "~/.aur-src/yay"
         cmd: "makepkg -sfi --noconfirm"
-        creates: /usr/bin/yay
 
     {{ include ".chezmoiansible/install-galaxy-module" | nindent 4 }}
 EOF
