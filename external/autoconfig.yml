@@ -8,6 +8,8 @@ config_version: 2
 settings:
   auto_save.session:
     global: true
+  content.desktop_capture:
+    https://meet.google.com: true
   content.media.audio_capture:
     https://meet.google.com: true
   content.media.audio_video_capture:

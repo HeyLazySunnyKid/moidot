@@ -28,7 +28,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       block:
         - name: NerdFont | Unpack font
           ansible.builtin.unarchive:
-            src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/IosevkaTerm.tar.xz
+            src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/IosevkaTerm.tar.xz
             dest: ~/.local/share/fonts
             remote_src: yes
 

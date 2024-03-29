@@ -16,6 +16,12 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - snap-pac
       - ntfs-3g
       - sof-firmware # sound firmware for modern cards
+      # fonts
+      - noto-fonts
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      - otf-font-awesome
+      - ttf-font-awesome
     enable_services:
       - reflector.service
       - NetworkManager.service
