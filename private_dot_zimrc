@@ -43,6 +43,7 @@ zmodule completion
 # User defined plugins
 
 zmodule romkatv/powerlevel10k --use degit
+zmodule jeffreytse/zsh-vi-mode --use degit
 zmodule ohmyzsh/ohmyzsh --root plugins/fzf
 #zmodule jeffreytse/zsh-vi-mode
 zmodule zdharma-continuum/fast-syntax-highlighting
