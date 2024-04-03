@@ -16,6 +16,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - kustomize
       - helm
       - kubie # shell independent swich context
+      - kubeseal # encrypt files inside k8s namespace
       # IaC
       - terraform
       # Bash scripts
