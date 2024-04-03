@@ -8,6 +8,8 @@ data:
   # Description: choose chrome broswer
   # Values: google-chrome chromium
   browser: chromium
+  # Wallpaper
+  wallpaper: ~/Pictures/river2_green_wallpaper.png
   name: Denis
   surname: Kaliuzhny
   email: deniskaspy@gmail.com
