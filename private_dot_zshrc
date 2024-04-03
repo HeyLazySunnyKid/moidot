@@ -160,6 +160,7 @@ _fzf_comprun() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+unset ZSH_AUTOSUGGEST_USE_ASYNC
 
 # Define an init function and append to zvm_after_init_commands
 function zvm_after_init() {
