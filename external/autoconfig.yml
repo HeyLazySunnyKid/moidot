@@ -8,8 +8,14 @@ config_version: 2
 settings:
   auto_save.session:
     global: true
+  colors.webpage.darkmode.enabled:
+    global: false
+  colors.webpage.preferred_color_scheme:
+    global: light
   content.desktop_capture:
     https://meet.google.com: true
+  content.javascript.clipboard:
+    global: access
   content.media.audio_capture:
     https://meet.google.com: true
   content.media.audio_video_capture:

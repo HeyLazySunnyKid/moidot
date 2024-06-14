@@ -21,13 +21,13 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - terraform
       # Bash scripts
       - gum
+      # pipx - python cli utilities inside venv
+      - python-pipx
     install_yay_packages:
       - github-cli
       - kind
+      - cruft
     install_bashible:
-      # - name: k3d
-      #   cmd: curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-      #   creates: /usr/local/bin/k3d
       - name: qutework
         cmd: |-
           sudo cp /usr/share/applications/org.qutebrowser.qutebrowser.desktop /usr/share/applications/org.qutebrowser.qutework.desktop && \
@@ -48,7 +48,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         creates: ~/.krew
     setup_completion:
       kubectl: kubectl completion zsh
-      # k3d: k3d completion zsh
       kind: kind completion zsh
       kustomize: kustomize completion zsh
       helm: helm completion zsh

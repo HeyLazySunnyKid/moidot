@@ -6,8 +6,7 @@
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": ["hyprland/workspaces"],
-  //"modules-center": ["hyprland/window"],
-  "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "hyprland/language", "clock" ],
+  "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "hyprland/language", "clock" ],
   "hyprland/workspaces": {
      "format": "{icon}",
      "on-click": "activate",
@@ -88,7 +87,8 @@
       "tooltip": false
   },
   "memory": {
-      "format": "{}% "
+      "format": "{used:0.1f}G ",
+      "tooltip-format": "{}% "
   },
   "temperature": {
       // "thermal-zone": 2,
