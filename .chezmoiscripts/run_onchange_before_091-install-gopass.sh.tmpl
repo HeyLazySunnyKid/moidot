@@ -26,11 +26,11 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         single_branch: yes
         version: main
         accept_newhostkey: true
-        key_file: "~/.ssh/id_rsa"
+        key_file: "~/.ssh/id_ed25519"
 EOF
 
-
 #HERE ASKS SECRET
+
 echo "Input gopass master key:"
 gpg2 --textmode --pinentry-mode loopback --import $HOME/.password-store/.keys/secretpasskey.asc
 

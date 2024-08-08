@@ -33,7 +33,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # Shell
       - tmux
       - zsh
-      - zsh-theme-powerlevel10k
       - direnv
       # perfomance
       - iotop
@@ -56,6 +55,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         creates: ~/.zim/init.zsh
     install_yay_packages:
       - downgrade # archlinux downgrade bash script
+      - zsh-theme-powerlevel10k
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-bashible" | nindent 4 }}

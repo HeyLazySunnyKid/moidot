@@ -8,6 +8,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   vars:
     source_file: {{ .chezmoi.sourceFile }} 
     install_packages: 
+      - base
+      - base-devel
       - reflector
       - networkmanager
       - networkmanager-openvpn
