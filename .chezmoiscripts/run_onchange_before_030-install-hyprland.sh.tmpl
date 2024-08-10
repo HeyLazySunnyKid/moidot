@@ -4,31 +4,31 @@ set -e
 
 echo "Start {{ .chezmoi.sourceFile }}"
 
-# TODO: before for nvidia: 
+# TODO: before for nvidia:
 # install nvidia-dkms
 # add systemd-boot param
 # install linux-headers
 # create module mkinitcpio
 # create /etc/modprobe.d/nvidia.conf
-# 
+#
 
 ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 - name: "Install hyprland"
   hosts: localhost
   gather_facts: false
-  vars: 
-    source_file: {{ .chezmoi.sourceFile }} 
-    install_packages: 
+  vars:
+    source_file: {{ .chezmoi.sourceFile }}
+    install_packages:
 {{ if ne .nvidia "yes" }}
       # video drivers
-      - mesa  
+      - mesa
       - libva-intel-driver
 {{ end }}
       # - xf86-video-intel # not recomended
       # Base hyprland packets
       - polkit
       # Ask password
-      - polkit-kde-agent 
+      - polkit-kde-agent
       # Base
       - qt5-wayland
       - qt6-wayland
@@ -40,33 +40,35 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - alacritty
       # Some special integrations
       - xdg-desktop-portal-hyprland
+      # For filechooser
+      - xdg-desktop-portal-gtk
     install_yay_packages:
       - pkg-config
       - gdb
       - ninja
       - gcc
-      - cmake 
-      - meson 
-      - libxcb 
+      - cmake
+      - meson
+      - libxcb
       - xcb-proto
       - xcb-util
-      - xcb-util-keysyms 
-      - libxfixes 
-      - libx11 
-      - libxcomposite 
-      - xorg-xinput 
-      - libxrender 
-      - pixman 
-      - wayland-protocols 
-      - cairo 
-      - pango 
-      - seatd 
-      - libxkbcommon 
-      - xcb-util-wm 
-      - xorg-xwayland 
-      - libinput 
-      - libliftoff 
-      - libdisplay-info 
+      - xcb-util-keysyms
+      - libxfixes
+      - libx11
+      - libxcomposite
+      - xorg-xinput
+      - libxrender
+      - pixman
+      - wayland-protocols
+      - cairo
+      - pango
+      - seatd
+      - libxkbcommon
+      - xcb-util-wm
+      - xorg-xwayland
+      - libinput
+      - libliftoff
+      - libdisplay-info
       - cpio
       - patch
 {{ if eq .nvidia "yes" }}

@@ -139,8 +139,7 @@ unset key
 
 # Set env
 export PATH="$HOME/.local/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export EDITOR=vim
-export =vim
+export EDITOR="zeditor --wait"
 
 
 # Improve fzf completition preview
@@ -171,7 +170,7 @@ function zvm_after_init() {
   eval "$(direnv hook zsh)"
 }
 
-alias edit=zed
+alias edit=zeditor
 alias k=kubectl
 alias c=wl-copy
 alias p=wl-paste
