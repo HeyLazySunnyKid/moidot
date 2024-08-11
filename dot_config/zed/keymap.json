@@ -31,7 +31,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      "space w t": "terminal_panel::ToggleFocus"
+      "ctrl-/": "terminal_panel::ToggleFocus"
     }
   },
   {
