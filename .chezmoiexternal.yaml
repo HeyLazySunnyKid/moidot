@@ -5,3 +5,20 @@ Heynotes:
 .cheats:
   type: git-repo
   url: ssh://git@gitea.heylazysunnykid.ru:222/heylazysunnykid/navi-cheats.git
+
+# ranger-plugins
+".config/ranger/plugins/ranger_tmux":
+  type: git-repo
+  url: https://github.com/joouha/ranger_tmux.git
+
+".config/ranger/plugins/ranger_devicons":
+  type: git-repo
+  url: https://github.com/alexanderjeurissen/ranger_devicons
+
+".config/ranger/plugins/ranger-archives":
+  type: git-repo
+  url: https://github.com/maximtrp/ranger-archives.git
+
+".config/ranger/plugins/ranger-fzf-filter":
+  type: git-repo
+  url: https://github.com/MuXiu1997/ranger-fzf-filter.git
