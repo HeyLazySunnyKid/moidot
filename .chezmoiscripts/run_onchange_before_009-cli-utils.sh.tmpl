@@ -5,8 +5,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   hosts: localhost
   gather_facts: false
   vars:
-    source_file: {{ .chezmoi.sourceFile }} 
-    install_packages: 
+    source_file: {{ .chezmoi.sourceFile }}
+    install_packages:
       - which
       # Source Version Control
       - git
@@ -20,7 +20,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - gawk
       - openssh
       - gnupg
-      - bind-tools 
+      - bind-tools
       - jq
       - pwgen
       # Archive
@@ -34,6 +34,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - tmux
       - zsh
       - direnv
+      - ranger
       # perfomance
       - iotop
       - htop
@@ -53,6 +54,12 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         cmd: |
           curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
         creates: ~/.zim/init.zsh
+      - name: ranger_tmux
+        cmd: |
+          pipx install ranger-tmux --include-deps && \
+          mkdir -p ~/.config/ranger/plugins && \
+          $HOME/.local/share/pipx/venvs/ranger-tmux/bin/python -m ranger_tmux install
+        creates: ~/.config/ranger/plugins/ranger_tmux.py
     install_yay_packages:
       - downgrade # archlinux downgrade bash script
       - zsh-theme-powerlevel10k
@@ -63,7 +70,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 
     - name: Change defaul shell
       become: true
-      user: 
+      user:
         name: {{ .chezmoi.username }}
         shell: /bin/zsh
 EOF

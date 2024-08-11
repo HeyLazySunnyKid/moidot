@@ -5,8 +5,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   hosts: localhost
   gather_facts: false
   vars:
-    source_file: {{ .chezmoi.sourceFile }} 
-    install_packages: 
+    source_file: {{ .chezmoi.sourceFile }}
+    install_packages:
       # libs
       - kwayland5
       # Wallpapaper
@@ -18,7 +18,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - obsidian
       # Cli for Gui
       - wl-clipboard # cli for clipboard
-      - wtype # cli simulate keyboard 
+      - wtype # cli simulate keyboard
       # notify-daemon
       - mako
       # sound
@@ -48,7 +48,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # Fuzzel nm-applet replacement
       - networkmanager-dmenu-git
       # File manager
-      - sigma-file-manager-bin
+      - nemo
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
