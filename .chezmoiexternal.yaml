@@ -22,3 +22,12 @@ Heynotes:
 ".config/ranger/plugins/ranger-fzf-filter":
   type: git-repo
   url: https://github.com/MuXiu1997/ranger-fzf-filter.git
+
+".config/ranger/plugins/zoxide":
+  type: git-repo
+  url: https://github.com/jchook/ranger-zoxide.git
+
+# tmux plugin manager
+".tmux/plugins/tpm":
+  type: git-repo
+  url: https://github.com/tmux-plugins/tpm

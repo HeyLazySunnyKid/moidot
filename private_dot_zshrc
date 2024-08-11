@@ -139,7 +139,7 @@ unset key
 
 # Set env
 export PATH="$HOME/.local/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export EDITOR="zeditor --new --wait"
+export EDITOR='zeditor --wait --new'
 
 
 # Improve fzf completition preview

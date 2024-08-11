@@ -17,31 +17,41 @@ font:
 
   size: 14
 
-# Colors (Everforest Dark)
+# Colors (One Dark)
 colors:
   # Default colors
   primary:
-    background: '0x2d353b'
-    foreground: '0xd3c6aa'
+    foreground: "0xabb2bf"
+    background: "0x282c34"
+
+  # Cursor colors
+  cursor:
+    text: "0x2c323c"
+    cursor: "0x5c6370"
+
+  # Selection colors
+  selection:
+    text: CellForeground
+    background: "0x3e4452"
 
   # Normal colors
   normal:
-    black:   '0x475258'
-    red:     '0xe67e80'
-    green:   '0xa7c080'
-    yellow:  '0xdbbc7f'
-    blue:    '0x7fbbb3'
-    magenta: '0xd699b6'
-    cyan:    '0x83c092'
-    white:   '0xd3c6aa'
+    black: "0x2c323c"
+    red: "0xe06c75"
+    green: "0x98c379"
+    yellow: "0xe5c07b"
+    blue: "0x61afef"
+    magenta: "0xc678dd"
+    cyan: "0x56b6c2"
+    white: "0x5c6370"
 
   # Bright colors
   bright:
-    black:   '0x475258'
-    red:     '0xe67e80'
-    green:   '0xa7c080'
-    yellow:  '0xdbbc7f'
-    blue:    '0x7fbbb3'
-    magenta: '0xd699b6'
-    cyan:    '0x83c092'
-    white:   '0xd3c6aa'
+    black: "0x3e4452"
+    red: "0xe06c75"
+    green: "0x98c379"
+    yellow: "0xe5c07b"
+    blue: "0x61afef"
+    magenta: "0xc678dd"
+    cyan: "0x56b6c2"
+    white: "0xabb2bf"
