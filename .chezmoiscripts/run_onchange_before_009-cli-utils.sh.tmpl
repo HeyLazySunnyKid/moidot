@@ -56,7 +56,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         creates: ~/.zim/init.zsh
       - name: ranger_tmux
         cmd: |
-          pipx install ranger-tmux --include-deps && \
+          pip install ranger-tmux --break-system-packages && \
           mkdir -p ~/.config/ranger/plugins && \
           $HOME/.local/share/pipx/venvs/ranger-tmux/bin/python -m ranger_tmux install
         creates: ~/.config/ranger/plugins/ranger_tmux.py
