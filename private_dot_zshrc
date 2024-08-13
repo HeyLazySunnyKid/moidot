@@ -176,3 +176,18 @@ alias c=wl-copy
 alias p=wl-paste
 
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+
+
+## Sesh session
+function sesh-sessions() {
+  {
+    exec </dev/tty
+    exec <&1
+    sesh connect $( sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --height 50 --prompt='⚡' )
+  }
+}
+
+zle     -N             sesh-sessions
+bindkey -M emacs '\es' sesh-sessions
+bindkey -M vicmd '\es' sesh-sessions
+bindkey -M viins '\es' sesh-sessions
