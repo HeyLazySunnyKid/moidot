@@ -1,0 +1,13 @@
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "ranger"
+
+[[session]]
+name = "chezmoi"
+path = "~/.local/share/chezmoi"
+startup_command = "edit ."
+
+[[session]]
+name = "home"
+path = "~"
