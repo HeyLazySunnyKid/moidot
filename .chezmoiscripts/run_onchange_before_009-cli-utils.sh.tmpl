@@ -32,6 +32,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - wget
       # Shell
       - tmux
+      - entr # tmux autoreload dependency
       - zsh
       - direnv
       - ranger
