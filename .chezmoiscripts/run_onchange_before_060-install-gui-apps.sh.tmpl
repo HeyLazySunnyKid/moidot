@@ -5,10 +5,14 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   hosts: localhost
   gather_facts: false
   vars:
-    source_file: {{ .chezmoi.sourceFile }} 
-    install_packages: 
+    source_file: {{ .chezmoi.sourceFile }}
+    install_packages:
       - zed
+      {{- if .intel }}
+      - vulkan-intel
+      {{- else if .nvidia }}
       - vulkan-nouveau
+      {{- end }}
       - xdg-desktop-portal-hyprland
       # Messging
       - discord
