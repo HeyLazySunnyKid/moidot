@@ -59,11 +59,13 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         cmd: |
           pip install ranger-tmux --break-system-packages && \
           mkdir -p ~/.config/ranger/plugins && \
-          $HOME/.local/share/pipx/venvs/ranger-tmux/bin/python -m ranger_tmux install
-        creates: ~/.config/ranger/plugins/ranger_tmux.py
+          $HOME/.local/share/pipx/venvs/ranger-tmux/bin/python -m ranger_tmux install && \
+          mv  ~/.config/ranger/plugins/ranger_tmux.py ~/.config/ranger/plugins/ranger-tmux.py
+        creates: ~/.config/ranger/plugins/ranger-tmux.py
     install_yay_packages:
       - downgrade # archlinux downgrade bash script
       - zsh-theme-powerlevel10k
+      - sesh-bin
   tasks:
     {{ include ".chezmoiansible/install-packages" | nindent 4 }}
     {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
