@@ -6,8 +6,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   hosts: localhost
   gather_facts: false
   vars:
-    source_file: {{ .chezmoi.sourceFile }} 
-    install_packages: 
+    source_file: {{ .chezmoi.sourceFile }}
+    install_packages:
       # Docker
       - docker
       - docker-compose
@@ -23,6 +23,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - gum
       # pipx - python cli utilities inside venv
       - python-pipx
+      - glab # gitlab cli
     install_yay_packages:
       - github-cli
       - kind
@@ -63,7 +64,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
 
     - name: Add docker group
       become: true
-      user: 
+      user:
         name: {{ .chezmoi.username }}
         groups: docker
         append: yes
