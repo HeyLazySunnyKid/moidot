@@ -2,14 +2,14 @@
 data:
   # Description: use nvidia drivers
   # Values: no yes
-  nvidia: yes    
+  nvidia: yes
   # Values: no yes
   asus: no
   # Description: choose chrome broswer
   # Values: google-chrome chromium
   browser: chromium
   # Wallpaper
-  wallpaper: ~/Pictures/river2_green_wallpaper.png
+  wallpaper: ~/Pictures/sky.png
   name: Denis
   surname: Kaliuzhny
   email: deniskaspy@gmail.com
