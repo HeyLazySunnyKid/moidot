@@ -6,10 +6,10 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
   hosts: localhost
   gather_facts: false
   vars:
-    source_file: {{ .chezmoi.sourceFile }} 
+    source_file: {{ .chezmoi.sourceFile }}
     install_packages:
       - python-pdftotext
-{{ if eq .nvidia "yes" }}
+{{ if .nvidia }}
     install_yay_packages:
       - nvidia-container-toolkit
 {{ else }}

@@ -3,6 +3,7 @@ data:
   # Description: use nvidia drivers
   # Values: no yes
   nvidia: yes
+  intel: no
   # Values: no yes
   asus: no
   # Description: choose chrome broswer

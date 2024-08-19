@@ -1,0 +1,31 @@
+#!/bin/bash
+echo "Start {{ .chezmoi.sourceFile }}"
+
+ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
+- name: "Install Developer utilities"
+  hosts: localhost
+  gather_facts: false
+  vars:
+    source_file: {{ .chezmoi.sourceFile }}
+    install_packages:
+    - rust
+    install_yay_packages: []
+    install_bashible: []
+      # - name: qutework
+      #   cmd: |-
+      #     sudo cp /usr/share/applications/org.qutebrowser.qutebrowser.desktop /usr/share/applications/org.qutebrowser.qutework.desktop && \
+      #     sudo sed -i -E 's/Name=qutebrowser/Name=qutework/g' /usr/share/applications/org.qutebrowser.qutework.desktop && \
+      #     sudo sed -i -E 's/Exec=qutebrowser(.*)/Exec=sh -c "qutebrowser -B $HOME\/.config\/qutework\1"/' /usr/share/applications/org.qutebrowser.qutework.desktop
+      #   creates: /usr/share/applications/org.qutebrowser.qutework.desktop
+    setup_completion: []
+      # kubectl: kubectl completion zsh
+    enable_services: []
+      # - docker
+  tasks:
+    {{ include ".chezmoiansible/install-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/install-yay-packages" | nindent 4 }}
+    {{ include ".chezmoiansible/install-bashible" | nindent 4 }}
+    {{ include ".chezmoiansible/setup-completion" | nindent 4 }}
+    {{ include ".chezmoiansible/enable-services" | nindent 4 }}
+    {{ include ".chezmoiansible/enable-services" | nindent 4 }}
+EOF
