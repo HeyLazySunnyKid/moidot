@@ -11,3 +11,13 @@ startup_command = "edit ."
 [[session]]
 name = "home"
 path = "~"
+
+[[session]]
+name = "k8s/admin@drivee-prod"
+path = "~/Projects/k8s/admin@drivee-prod"
+startup_command = "kubie ctx admin@drivee-prod"
+
+[[session]]
+name = "k8s/admin@drivee-dev"
+path = "~/Projects/k8s/admin@drivee-dev"
+startup_command = "kubie ctx admin@drivee-dev"
