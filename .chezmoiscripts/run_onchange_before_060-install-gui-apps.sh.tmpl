@@ -14,7 +14,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - vulkan-nouveau
       {{- end }}
       - xdg-desktop-portal-hyprland
-      - ferdium-bin
       # Messging
       - discord
       # Video Edit Tool
@@ -27,18 +26,19 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - hyphen
       - hyphen-en
     install_yay_packages:
+      - ferdium-bin
       - hyphen-ru
     {{- if .asus }}
       - rog-control-center
     {{- end }}
-    install_bashible:
-    - name: amneziavpn
-      cmd: >-
-        curl -O https://github.com/amnezia-vpn/amnezia-client/releases/download/4.6.0.3/AmneziaVPN_Linux_4.6.0.3.tar.zip &&
-        tar -xzf AmneziaVPN_Linux_4.6.0.3.tar.zip &&
-        chmod +x AmneziaVPN_Linux_Installer.bin &&
-        ./AmneziaVPN_Linux_Installer.bin
-      creates: /usr/local/sbin/AmneziaVPN
+    install_bashible: []
+    # - name: amneziavpn
+    #   cmd: >-
+    #     curl -O https://github.com/amnezia-vpn/amnezia-client/releases/download/4.6.0.3/AmneziaVPN_Linux_4.6.0.3.tar.zip &&
+    #     tar -xzf AmneziaVPN_Linux_4.6.0.3.tar.zip &&
+    #     chmod +x AmneziaVPN_Linux_Installer.bin &&
+    #     ./AmneziaVPN_Linux_Installer.bin
+    #   creates: /usr/local/sbin/AmneziaVPN
     #   - name: ventoy
     #     #TODO: create arch pkg
   tasks:

@@ -59,7 +59,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         cmd: |
           pip install ranger-tmux --break-system-packages && \
           mkdir -p ~/.config/ranger/plugins && \
-          $HOME/.local/share/pipx/venvs/ranger-tmux/bin/python -m ranger_tmux install && \
+          python -m ranger_tmux install && \
           mv  ~/.config/ranger/plugins/ranger_tmux.py ~/.config/ranger/plugins/ranger-tmux.py
         creates: ~/.config/ranger/plugins/ranger_tmux.py
     install_yay_packages:
