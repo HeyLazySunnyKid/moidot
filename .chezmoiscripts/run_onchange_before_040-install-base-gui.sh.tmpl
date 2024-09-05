@@ -37,8 +37,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - thunar
     install_yay_packages:
       # Browsers
-      - qutebrowser
-      - {{ .browser }}
+      - firefox
       # Other
       - grimblast # Taking screenhsot
       - waybar # panel

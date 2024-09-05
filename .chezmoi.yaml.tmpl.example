@@ -6,9 +6,6 @@ data:
   intel: no
   # Values: no yes
   asus: no
-  # Description: choose chrome broswer
-  # Values: google-chrome chromium
-  browser: chromium
   # Wallpaper
   wallpaper: ~/Pictures/sky.png
   name: Denis
