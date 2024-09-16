@@ -58,13 +58,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
         cmd: |
           curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
         creates: ~/.zim/init.zsh
-      - name: ranger_tmux
-        cmd: |
-          pip install ranger-tmux --break-system-packages && \
-          mkdir -p ~/.config/ranger/plugins && \
-          python -m ranger_tmux install && \
-          mv  ~/.config/ranger/plugins/ranger_tmux.py ~/.config/ranger/plugins/ranger-tmux.py
-        creates: ~/.config/ranger/plugins/ranger_tmux.py
     install_yay_packages:
       - downgrade # archlinux downgrade bash script
       - zsh-theme-powerlevel10k
