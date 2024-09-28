@@ -25,10 +25,12 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       # pipx - python cli utilities inside venv
       - python-pipx
       - glab # gitlab cli
+      - virt-viewer # SPICE VM Console Viewer
     install_yay_packages:
       - github-cli
       - kind
       - cruft
+      - go-task-bin
     install_bashible:
       - name: krew
         cmd: |-

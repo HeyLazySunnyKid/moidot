@@ -11,6 +11,7 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - kwayland5
       # Wallpapaper
       - hyprpaper
+      - hyprlock
       # Wayland utilities
       - fuzzel # fuzzi runner dmenu analog
       - grim  # Screenshoot tool
@@ -44,7 +45,6 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - tessen # fuzzel pass menu
       - clipman # clipboard manager for wayland
       - slurp # Select region for screenshoot
-      - swaylock
       - wlogout # logout screen
       # Fuzzel nm-applet replacement
       - networkmanager-dmenu-git

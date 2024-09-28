@@ -2,10 +2,10 @@
 data:
   # Description: use nvidia drivers
   # Values: no yes
-  nvidia: yes
-  intel: no
+  nvidia: false
+  intel: false
   # Values: no yes
-  asus: no
+  asus: false
   # Wallpaper
   wallpaper: ~/Pictures/sky.png
   name: Denis
