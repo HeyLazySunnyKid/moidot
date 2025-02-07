@@ -139,7 +139,7 @@ unset key
 
 # Set env
 export PATH="$HOME/.local/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export EDITOR='zeditor --wait --new'
+export EDITOR='nvim'
 
 
 # Improve fzf completition preview
@@ -206,4 +206,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

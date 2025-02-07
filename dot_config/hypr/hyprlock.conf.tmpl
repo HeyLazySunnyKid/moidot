@@ -1,5 +1,8 @@
 # source = /home/justin/.cache/wal/colors-hyprland.conf
 
+$font = JetBrains Mono
+$font_bold = JetBrains Mono Extrabold
+
 # BACKGROUND
 background {
     monitor =
@@ -32,7 +35,7 @@ input-field {
     dots_center = true
     outer_color = rgba(0, 0, 0, 0)
     inner_color = rgba(0, 0, 0, 0.2)
-    font_color = $foreground
+    font_color = rgb(242, 243, 244)
     fade_on_empty = false
     rounding = -1
     check_color = rgb(204, 136, 34)
@@ -49,7 +52,7 @@ label {
   text = cmd[update:1000] echo "$(date +"%A, %B %d")"
   color = rgba(242, 243, 244, 0.75)
   font_size = 22
-  font_family = JetBrains Mono
+  font_family = $font
   position = 0, 300
   halign = center
   valign = center
@@ -61,13 +64,23 @@ label {
   text = cmd[update:1000] echo "$(date +"%-I:%M")"
   color = rgba(242, 243, 244, 0.75)
   font_size = 95
-  font_family = JetBrains Mono Extrabold
+  font_family = $font_bold
   position = 0, 200
   halign = center
   valign = center
 }
 
-
+# LAYOUT
+label {
+  monitor =
+  text = $LAYOUT
+  color = rgba(242, 243, 244, 0.75)
+  font_size = 18
+  font_family = $font
+  position = 30, -30
+  halign = left
+  valign = top
+}
 
 # Profile Picture
 # image {

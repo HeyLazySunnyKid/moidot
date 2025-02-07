@@ -21,7 +21,8 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - openssh
       - gnupg
       - bind-tools
-      - jq
+      - jq # json processor
+      - yq # yaml processor
       - pwgen
       # Ansible Dependencies
       - sshpass
@@ -43,9 +44,9 @@ ansible-playbook -i localhost, -c local /dev/stdin <<'EOF'
       - iotop
       - htop
       # better cli
-      - fd
-      - bat
-      - ripgrep
+      - fd      # better find
+      - bat     # better cat/less
+      - ripgrep # better grep
       # autocmd
       - fzf
       - navi
